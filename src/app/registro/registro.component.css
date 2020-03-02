@@ -1,0 +1,15 @@
+.formulario {
+    margin-top:9%;
+    width:100%; 
+    height: 100%; 
+  }
+  .centrar{
+      display: flex;
+      justify-content:center;
+      align-items: center;
+  }
+
+  .btn-color{
+      background-color:#FF9100 !important;
+  }
+

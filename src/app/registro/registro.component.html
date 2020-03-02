@@ -1,0 +1,101 @@
+<div class="formulario">
+  <form class="border border-light p-2" #UsuarioForm = "ngForm" (ngSubmit)="guardarUsuario(UsuarioForm)">
+    <div class="centrar">
+      <p class="h1">CRUD USUARIOS</p>
+    </div>
+    <div class="form-group row">
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control"name="idUsuario" id="idUsuario" placeholder="Nombre" style="display: none;" 
+        [(ngModel)]="this.dataapiservice.selectUsuario.id">
+      </div>
+    </div>
+      <div class="form-row">            
+          <div class="form-group col-md-4">
+            <label for="inputName">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre"
+            [(ngModel)]="this.dataapiservice.selectUsuario.nombre"> 
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputLastname">Apellido Paterno:</label>
+            <input type="text" class="form-control" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido"
+            [(ngModel)]="this.dataapiservice.selectUsuario.apellidoPaterno">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputLastname2">Apellido Materno:</label>
+            <input type="text" class="form-control" name="apellidoMaterno" id="apellidoMaterno" placeholder="Apellido"
+            [(ngModel)]="this.dataapiservice.selectUsuario.apellidoMaterno">
+          </div>
+      </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputId">Cedula:</label>
+            <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Cedula"
+            [(ngModel)]="this.dataapiservice.selectUsuario.cedula">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputTelf">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono"
+            [(ngModel)]="this.dataapiservice.selectUsuario.telefono">
+          </div>  
+          <div class="form-group col-md-4">
+            <label for="inputTelf">Correo Electronico:</label>
+            <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo"
+            [(ngModel)]="this.dataapiservice.selectUsuario.correo">              
+          </div>                                                                   
+        </div> 
+
+        <div class="form-row">         
+          <div class="form-group col-md-4">
+            <label for="inputTelf">Contraseña:</label>
+            <input type="password" class="form-control" name="contrasenna" id="contrasenna" placeholder="Contraseña"
+            [(ngModel)]="this.dataapiservice.selectUsuario.contrasenna">              
+          </div>                                                                   
+        </div> 
+        <div class="form-row">
+          <div class="form-group">
+            <div class="centrar">
+              <button type="submit" class="btn btn-lg btn-deep-orange ">Registrar</button>       
+            </div>   
+          </div>
+        </div>       
+  </form>
+  <p class="h4">Listas de Usuarios Registrados</p>
+  <div class="centrar">
+    <div class="form-group row">
+      <div class="form-group col table-responsive-md" >
+        <table class="table table-striped w-auto">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">1°Apellido</th>
+                  <th scope="col">2°Apellido</th>
+                  <th scope="col">Cedula</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Modificar</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let Usuario of usuarios ; index as i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{Usuario.Nombre}}</td>
+                  <td>{{Usuario.ApellidoPaterno}}</td>
+                  <td>{{Usuario.ApellidoMaterno}}</td>
+                  <td>{{Usuario.Cedula}}</td>
+                  <td>{{Usuario.Telefono}}</td>
+                  <td>{{Usuario.Correo}}</td>
+                  <td>
+                    <a class="btn btn-sm btn-danger far fa-trash-alt" 
+                    (click)="eliminarUsuario(Usuario.Id)"></a>
+                    <button class="btn btn-sm btn-color fas fa-edit"
+                    (click)="seleccionarUsuario(Usuario)"></button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>            
+      </div>                                        
+    </div>                         
+  </div> 
+</div>
+    
